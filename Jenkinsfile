@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/NadavElgrabli/python-ci-cd-simple.git'  // Replace with your GitHub repo
+                git branch: 'main', url: 'https://github.com/NadavElgrabli/python-ci-cd-simple.git'
             }
         }
         stage('Install Dependencies') {
