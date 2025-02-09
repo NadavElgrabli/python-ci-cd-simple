@@ -4,22 +4,29 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/python-ci-cd-project.git'  // Replace with your GitHub URL
+                git 'https://github.com/NadavElgrabli/python-ci-cd-simple.git'  // Replace with your GitHub repo
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'  // Install pytest and other dependencies
+                bat '''
+                python -m venv venv  // Create virtual environment
+                call venv\\Scripts\\activate  // Activate venv
+                pip install -r requirements.txt  // Install dependencies
+                '''
             }
         }
         stage('Run Tests') {
             steps {
-                sh 'pytest'  // Run the tests using pytest
+                bat '''
+                call venv\\Scripts\\activate  // Activate venv
+                pytest  // Run tests
+                '''
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying the application..."'  // Placeholder for deployment step
+                bat 'echo Deploying the application...'  // Placeholder for deployment
             }
         }
     }
