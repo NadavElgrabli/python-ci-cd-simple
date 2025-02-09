@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                 python3 -m venv venv  // Create virtual environment
-                source venv/bin/activate  // Activate venv
+                call venv\\Scripts\\activate  // Activate venv
                 pip install -r requirements.txt  // Install dependencies
                 '''
             }
@@ -18,8 +18,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '''
-                source venv/bin/activate  // Activate venv
-                python3 -m pytest  // Run tests with Python
+                call venv\\Scripts\\activate  // Activate venv
+                python3 -m pytest  // Run tests with Python3
                 '''
             }
         }
