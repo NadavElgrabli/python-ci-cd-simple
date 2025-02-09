@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                bat '''
+                sh '''
                 python -m venv venv  // Create virtual environment
                 call venv\\Scripts\\activate  // Activate venv
                 pip install -r requirements.txt  // Install dependencies
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                bat '''
+                sh '''
                 call venv\\Scripts\\activate  // Activate venv
                 python -m pytest  // Run tests with Python (instead of pytest command)
                 '''
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat 'echo Deploying the application...'  // Placeholder for deployment
+                sh 'echo Deploying the application...'  // Placeholder for deployment
             }
         }
     }
