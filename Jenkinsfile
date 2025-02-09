@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                 python3 -m venv $WORKSPACE/venv  // Create virtual environment
-                call venv\\Scripts\\activate  // Activate venv
+                source $WORKSPACE/venv/bin/activate  // Activate venv (Linux)
                 pip install -r requirements.txt  // Install dependencies
                 '''
             }
@@ -18,7 +18,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '''
-                call venv\\Scripts\\activate  // Activate venv
+                source $WORKSPACE/venv/bin/activate  // Activate venv (Linux)
                 python3 -m pytest  // Run tests with Python3
                 '''
             }
