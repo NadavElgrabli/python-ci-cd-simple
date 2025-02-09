@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'windows' }  // Ensure this is set to a Windows agent
+    agent any  // Runs on any available node (including master)
     stages {
         stage('Checkout') {
             steps {
