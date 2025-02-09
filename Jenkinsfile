@@ -9,7 +9,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                python3 -m venv venv  // Create virtual environment
+                python3 -m venv $WORKSPACE/venv  // Create virtual environment
                 call venv\\Scripts\\activate  // Activate venv
                 pip install -r requirements.txt  // Install dependencies
                 '''
